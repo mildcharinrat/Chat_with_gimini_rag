@@ -3,7 +3,7 @@ import pandas as pd
 import google.generativeai as genai
 
 st.set_page_config(page_title="🤖 Chat with Your Data", layout="wide")
-st.title("🗨️ Chat with Your Data | AI-Powered Insights, Data Driven by Gemini")
+st.title("🤖 Chat with Your Data | AI-Powered Insights, Data Driven by Gemini")
 st.caption("Upload your dataset and data dictionary, then ask questions — Gemini will will give natural language insights!")
 
 # -------- Gemini Config -------- #
