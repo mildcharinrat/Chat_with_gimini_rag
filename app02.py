@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import google.generativeai as genai
 
-st.set_page_config(page_title="Code Assistant with CSV + Gemini", layout="wide")
-st.title("🧠 Ask Data in Natural Language, Get Python Code")
+st.set_page_config(page_title="🤖 Chat with Your Data", layout="wide")
+st.title("🤖 Chat with Your Data – AI-Powered Insights, Driven by Gemini")
 st.caption("Gemini Pro + Text-to-Query Pattern + exec()")
 
 # -------- Gemini Config -------- #
