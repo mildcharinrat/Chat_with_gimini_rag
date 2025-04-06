@@ -7,15 +7,14 @@ st.title("💬 Chat with CSV using Gemini Pro")
 st.caption("Powered by Streamlit + Google Generative AI")
 
 # -------- API Key -------- #
-api_key = st.text_input("🔑 Enter your Gemini API Key", type="password")
 model = None
-if api_key:
-    try:
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("gemini-pro")
-        st.success("✅ Gemini model is ready!")
-    except Exception as e:
-        st.error(f"Failed to configure Gemini: {e}")
+try:
+    api_key = st.secrets["gemini_api_key"]
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel("gemini-pro")
+    st.success("✅ Gemini model is ready!")
+except Exception as e:
+    st.error(f"Failed to configure Gemini: {e}")
 
 # -------- Session State -------- #
 if "chat_history" not in st.session_state:
