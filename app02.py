@@ -105,12 +105,13 @@ Output only the code. No explanation.
             code = response.text.strip("```python").strip("```").strip()
 
             # execute the generated code
-try:
-    local_vars = {"df": df}
-    exec(code, local_vars)
-    ANSWER = local_vars.get("ANSWER", "No variable named ANSWER was found.")
-    ...
-
+            try:
+                local_vars = {"df": df}
+                exec(code, local_vars)
+                ANSWER = local_vars.get("ANSWER", "No variable named ANSWER was found.")
+                st.success("✅ Code executed successfully.")
+                st.write("🧾 **Result (ANSWER):**")
+                st.write(ANSWER)
 
                 # -------- Explain Result -------- #
                 explain_the_results = f'''
