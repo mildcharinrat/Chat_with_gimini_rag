@@ -105,33 +105,12 @@ Output only the code. No explanation.
             code = response.text.strip("```python").strip("```").strip()
 
             # execute the generated code
-            try:
-                local_vars = {"df": df, "pd": pd}  # ให้ Gemini ใช้ pd ได้โดยไม่ import ใหม่
-                exec(code, local_vars)
+try:
+    local_vars = {"df": df}
+    exec(code, local_vars)
+    ANSWER = local_vars.get("ANSWER", "No variable named ANSWER was found.")
+    ...
 
-                if "ANSWER" not in local_vars:
-                raise NameError("❌ Variable 'ANSWER' was not created in the generated code.")
-
-                ANSWER = local_vars["ANSWER"]
-                st.success("✅ Code executed successfully.")
-                st.write("🧾 **Result (ANSWER):**")
-                st.write(ANSWER)
-
-                # -------- Explain Result -------- #
-                explain_the_results = f'''
-            The user asked: "{question}"  
-            Here is the result: {ANSWER}  
-            Please summarize this answer and provide your interpretation.  
-            Include your opinion on the customer's persona or behavior based on the result.
-            '''
-                explanation_response = model.generate_content(explain_the_results)
-                explanation = explanation_response.text
-
-                st.write("🧠 **Gemini's Explanation:**")
-                st.markdown(explanation)
-
-            except Exception as exec_error:
-                st.error(f"⚠️ Error running generated code: {exec_error}")
 
                 # -------- Explain Result -------- #
                 explain_the_results = f'''
