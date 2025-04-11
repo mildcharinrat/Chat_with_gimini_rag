@@ -80,7 +80,7 @@ Your job is to write Python code snippets based on the user's question and the p
 Please generate Python code that:
 - uses a DataFrame named `{df_name}`
 - stores the result in a variable called `ANSWER`
-- does NOT import pandas
+- does import pandas
 - changes date columns to datetime if needed
 - uses exec() to run the code
 
